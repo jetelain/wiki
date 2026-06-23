@@ -1,9 +1,11 @@
 
-# 📘 Serveur AMD AI + Ollama & Open WebUI
+# 📘 Serveur AMD AI avec Ubuntu, Ollama et Open WebUI
 
 Matériel utilisé : [GMKtec Evo-X2 AI Mini-PC AMD Ryzen AI Max+ 395 (5,1GHz), 96GB LPDDR5X 8000MHz (12GB*8), 1TB PCIe 4.0 SSD](https://www.amazon.fr/dp/B0FK2299GS)
 
 ## 🔹 Étape 1 : Préparation du système 
+
+On suppose que le serveur dispose déjà de Ubuntu Server.
 
 1. **Modifier la VRAM réservée dans le BIOS** pour libérer un maximum de mémoire pour le GPU (ex: 512MB ou 1GB).
 
@@ -73,31 +75,64 @@ Insérez le contenu suivant :
 ```ini
 [Service]
 Environment="OLLAMA_HOST=0.0.0.0:11434"
-Environment="OLLAMA_CONTEXT_LENGTH=131072"
-Environment="OLLAMA_KEEP_ALIVE=1h"
+Environment="OLLAMA_KEEP_ALIVE=-1"
 ```
 
-Expose Ollama sur le réseau local, définit le contexte par défaut à 128k et active le mode keep-alive pour 1 heure (pour limiter les temps d'attente liés au démarrage à froid du modèle).
+Expose Ollama sur le réseau local, et active le mode keep-alive indéfiniment (pour limiter les temps d'attente liés au démarrage à froid du modèle).
 
 3. **Rechargement et redémarrage du service** :
 ```bash
-sudo systemctl daemon-reload
 sudo systemctl restart ollama.service
 ```
 
 ## 🔹 Étape 6 : Téléchargement des modèles LLM
 
-Téléchargez les modèles Qwen3.6-27B et Qwen3.6-35B via Ollama :
+1. **Téléchargement des modèles Qwen3.6 et Gemma via Ollama** :
 
 ```bash
-ollama pull hf.co/unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q8_K_XL
+ollama pull hf.co/unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL
 ollama pull hf.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q8_K_XL
+ollama pull hf.co/unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL
+ollama pull hf.co/unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q8_K_XL
 ```
 
-| Modèle                              | VRAM | Performance          |
-|-------------------------------------|------|----------------------|
-| Qwen3.6-35B-A3B-MTP-GGUF:UD-Q8_K_XL | 42GB | Bonne: 40 token/sec  |
-| Qwen3.6-27B-MTP-GGUF:UD-Q8_K_XL     | 42GB | Faible: 6 token/sec  |
+2. **Ajout d'alias avec une configuration adaptée à chaque modèle** :
+
+```bash
+curl http://localhost:11434/api/create -d '{
+  "model": "Qwen3.6-35B-A3B",
+  "from": "hf.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q8_K_XL",
+  "parameters": {
+	"num_ctx": 131072,
+	"draft_num_predict": 2
+  }
+}'
+
+curl http://localhost:11434/api/create -d '{
+  "model": "Qwen3.6-27B",
+  "from": "hf.co/unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL",
+  "parameters": {
+	"num_ctx": 131072,
+	"draft_num_predict": 2
+  }
+}'
+
+curl http://localhost:11434/api/create -d '{
+  "model": "Gemma-4-31B",
+  "from": "hf.co/unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL",
+  "parameters": {
+	"num_ctx": 65536
+  }
+}'
+
+curl http://localhost:11434/api/create -d '{
+  "model": "Gemma-4-26B-A4B",
+  "from": "hf.co/unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q8_K_XL",
+  "parameters": {
+	"num_ctx": 131072
+  }
+}'
+```
 
 ## 🔹 Étape 7 : Déploiement d'Open WebUI via Docker Compose
 1. **Création du répertoire de travail** :
@@ -139,7 +174,7 @@ docker compose up -d
 
 Ouvrir un navigateur sur `http://[ip du serveur]:3000/` pour configurer le compte administrateur de Open WebUI
 
-## 🔹 Étape 8 : Vérification et surveillance post-installation
+## 🔹 Vérification et surveillance post-installation
 Exécutez ces commandes pour valider le bon fonctionnement :
 ```bash
 # État de l'API Ollama
@@ -154,4 +189,22 @@ rocminfo | grep -i "Marketing Name:"
 htop
 df -h
 free -h
+```
+
+## 🔹 Maintenance / Mise à jour
+
+1. **ubuntu** :
+```bash
+sudo apt update && sudo apt dist-upgrade -y
+```
+
+2. **Ollama** :
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+3. **Open WebUI** :
+```bash
+cd /opt/open-webui
+docker compose up --pull always -d
 ```
