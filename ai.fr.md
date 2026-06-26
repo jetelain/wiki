@@ -75,4 +75,4 @@ Note : le serveur a été configuré pour avoir 72 Go de VRAM (sur les 96 Go de 
 
 Avec le meilleur modèle (Qwen3.6-35B-A3B), cela fait 0,13 € d'électricité par million de tokens générés.
 
-[^1]: `ollama ps` affiche 1.1 Go ou 2.4 Go car seul le modèle DRAFT est compatibilisé par la commande ollama. Cependant l'usage réel de la VRAM est celui indiqué dans la tableau (mesuré via ROCm).
+[^1]: `ollama ps` affiche 1.1 Go ou 2.4 Go car seul le modèle DRAFT est pris en compte par la commande ollama. Cependant l'usage réel de la VRAM est celui indiqué dans le tableau (mesuré via ROCm).

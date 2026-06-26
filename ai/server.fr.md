@@ -5,7 +5,7 @@ Matériel utilisé : [GMKtec Evo-X2 AI Mini-PC AMD Ryzen AI Max+ 395 (5,1GHz), 9
 
 ## 🔹 Étape 1 : Préparation du système 
 
-On suppose que le serveur dispose déjà de Ubuntu Server.
+On suppose que le serveur dispose déjà d'Ubuntu Server.
 
 1. **Modifier la VRAM réservée dans le BIOS** pour libérer un maximum de mémoire pour le GPU (ex: 512MB ou 1GB).
 

@@ -1,6 +1,6 @@
 # Création des modèles LLM
 
-Les modèles ont été envoyés sur ollama.com, il n'est pas nécessaire de les re-créer. Cette page retrace leur création.
+Les modèles ont été envoyés sur ollama.com, il n'est pas nécessaire de les recréer. Cette page retrace leur création.
 
 ## Qwen 3.6 35B A3B
 
@@ -93,9 +93,9 @@ Les modèles ont été envoyés sur ollama.com, il n'est pas nécessaire de les 
 
 | Fichier                            | SHA256                                                           |
 |------------------------------------|------------------------------------------------------------------|
-| gemma-4-31B-it-UD-Q4_K_XL.gguf | dd69c1566b0d559f303424e2b00e830837bb6c8b25e5baa08c75f11709bd41db |
+| gemma-4-31B-it-UD-Q4_K_XL.gguf     | dd69c1566b0d559f303424e2b00e830837bb6c8b25e5baa08c75f11709bd41db |
 | mmproj-BF16.gguf                   | 7a4601b12ec680f706a7e0c7e1f78f579b1db64d485a9e352ee87d4b9daa45e4 |
-| mtp-gemma-4-31B-it.gguf         | 5ae8b0117bed601e8924c6305bd5b0585de361d51f0e77091bcb4252cf1f27de |
+| mtp-gemma-4-31B-it.gguf            | 5ae8b0117bed601e8924c6305bd5b0585de361d51f0e77091bcb4252cf1f27de |
 
 
 4. Créer le modèle avec ollama
