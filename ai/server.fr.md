@@ -90,10 +90,11 @@ sudo systemctl restart ollama.service
 1. **Téléchargement des modèles Qwen3.6 et Gemma via Ollama** :
 
 ```bash
+ollama pull jetelain/Qwen3.6-35B-A3B
+ollama pull jetelain/Qwen3.6-35B-A3B-Code
+ollama pull jetelain/Gemma-4-26B-A4B
 ollama pull hf.co/unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL
-ollama pull hf.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q8_K_XL
 ollama pull hf.co/unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL
-ollama pull hf.co/unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q8_K_XL
 ```
 
 2. **Ajout d'alias avec une configuration adaptée à chaque modèle** :
@@ -101,19 +102,31 @@ ollama pull hf.co/unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q8_K_XL
 ```bash
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B",
-  "from": "hf.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q8_K_XL",
-  "parameters": {
-	"num_ctx": 131072,
-	"draft_num_predict": 2
-  }
+  "from": "jetelain/Qwen3.6-35B-A3B"
+}'
+
+curl http://localhost:11434/api/create -d '{
+  "model": "Qwen3.6-35B-A3B-Code",
+  "from": "jetelain/Qwen3.6-35B-A3B-Code"
+}'
+
+curl http://localhost:11434/api/create -d '{
+  "model": "Gemma-4-26B-A4B",
+  "from": "jetelain/Gemma-4-26B-A4B"
 }'
 
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-27B",
   "from": "hf.co/unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL",
   "parameters": {
-	"num_ctx": 131072,
-	"draft_num_predict": 2
+    "num_ctx": 131072,
+    "draft_num_predict": 2,
+    "temperature": 1.0, 
+    "top_p": 0.95, 
+    "top_k": 20, 
+    "min_p": 0.0, 
+    "presence_penalty": 0.0, 
+    "repetition_penalty": 1.0
   }
 }'
 
@@ -121,15 +134,10 @@ curl http://localhost:11434/api/create -d '{
   "model": "Gemma-4-31B",
   "from": "hf.co/unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL",
   "parameters": {
-	"num_ctx": 65536
-  }
-}'
-
-curl http://localhost:11434/api/create -d '{
-  "model": "Gemma-4-26B-A4B",
-  "from": "hf.co/unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q8_K_XL",
-  "parameters": {
-	"num_ctx": 131072
+    "num_ctx": 65536,
+    "temperature": 1.0, 
+    "top_p": 0.95, 
+    "top_k": 64
   }
 }'
 ```
