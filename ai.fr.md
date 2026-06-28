@@ -22,12 +22,12 @@ graph TB
     end
 
     subgraph "🏠 Accès Local"
-        IDELocal[💻 Visual Studio]
+        IDELocal[💻 Visual Studio<br/>⌨️ OpenCode]
         BrowserLocal[🌍 Navigateur]
     end
 
     subgraph "📡 Accès Distant"
-        IDE[💻 Visual Studio]
+        IDE[💻 Visual Studio<br/>⌨️ OpenCode]
         Browser[🌍 Navigateur]
     end
 
@@ -39,7 +39,7 @@ graph TB
 
 ### Matériel
 
-- [GMKtec Evo-X2 AI Mini-PC, AMD Ryzen AI Max+ 395, 96GB](https://www.amazon.fr/dp/B0FK2299GS) en tant que serveur. Consommation électrique :
+- [GMKtec Evo-X2 AI Mini-PC, AMD Ryzen AI Max+ 395, 96GB](https://www.amazon.fr/dp/B0FK2299GS) en tant que serveur. Consommation électrique (avec le coût de l'électricité en France):
 	- 8 W au repos (15 à 20 €/ans)
   - 130 à 140 W lors de l'inférence (0,03 €/heure)
 	
@@ -51,7 +51,7 @@ graph TB
 - Modèles Unsloth : Alibaba [Qwen 3.6](https://unsloth.ai/docs/models/qwen3.6) et Google [Gemma 4](https://unsloth.ai/docs/models/gemma-4)
   - Modèles MOE: quantifiés en 8 bits (Unsloth Dynamic, UD-Q8_K_XL)
   - Modèles denses: quantifiés en 4 bits (Unsloth Dynamic, UD-Q4_K_XL)
-  - Modèles Qwen 3.6: MTP (Multi Token Prediction) avec 2 draft pour un meilleur débit
+  - Modèles MTP (Multi Token Prediction) avec 2 draft pour un meilleur débit
 - Réseau Tailscale pour usage hors domicile
 
 ## Mise en place
@@ -59,6 +59,7 @@ graph TB
 - [📘 Serveur AMD AI avec Ubuntu, Ollama et Open WebUI](ai/server.fr.md)
 - [📘 Réseau Tailscale](ai/tailscale.fr.md)
 - [📘 Visual Studio 2026](ai/vs2026.fr.md)
+- [📘 OpenCode](ai/opencode.fr.md)
 
 ## Métriques
 
