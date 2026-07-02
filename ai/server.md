@@ -201,3 +201,5 @@ curl -fsSL https://ollama.com/install.sh | sh
 3. **Open WebUI** :
 ```bash
 cd /opt/open-webui
+docker compose up --pull always -d
+```
