@@ -38,16 +38,27 @@ sudo usermod -aG render,video $LOGNAME
 sudo reboot
 ```
 
-## 🔹 Étape 3 : Optimisation de la gestion mémoire GPU (`amd-ttm`)
-1. **Installation des outils de debug AMD** :
+## 🔹 Étape 3 : Optimisation de la gestion mémoire GPU
+
+**Ajustement de la limite de pages mémoire (Vram management)** :
 ```bash
-sudo apt install amd-debug-tools -y
+sudo nano /etc/modprobe.d/amdttm.conf
 ```
 
-2. **Ajustement de la limite de pages mémoire (Vram management)** :
+Le contenu du fichier dépends de ce que vous souhaitez accorder au GPU (prévoir au minimum 44 Go)
+- Pour autoriser 44 Go (idéal pour les machines à 64 Go) : 44 * 1024 * 1024 / 4, spécifier `11534336` (pages de 4k)
+- Pour autoriser 72 Go (idéal pour les machines à 96 Go) : 72 * 1024 * 1024 / 4, spécifier `18874368` (pages de 4k)
+- Pour autoriser 96 Go (idéal pour les machines à 128 Go) : 96 * 1024 * 1024 / 4, spécifier `25165824` (pages de 4k)
+
+Par exemple pour 72 Go :
+```
+options amdttm pages_limit=18874368
+options amdttm page_pool_size=18874368
+```
+
+**Appliquer les paramètres et relancer la machine**
 ```bash
-sudo amd-ttm --set 72
-sudo update-initramfs -u
+sudo update-initramfs -u -k all
 sudo reboot
 ```
 
@@ -107,7 +118,10 @@ curl http://localhost:11434/api/create -d '{
 
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B-Code",
-  "from": "jetelain/Qwen3.6-35B-A3B-Code"
+  "from": "jetelain/Qwen3.6-35B-A3B-Code",
+  "parameters": {
+    "num_ctx": 196608
+  }
 }'
 
 curl http://localhost:11434/api/create -d '{

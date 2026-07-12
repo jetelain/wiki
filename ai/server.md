@@ -37,17 +37,27 @@ sudo usermod -aG render,video $LOGNAME
 sudo reboot
 ```
 
-## 🔹 Step 3 : GPU Memory Management Optimization (`amd-ttm`)
+## 🔹 Step 3 : GPU Memory Management Optimization
 
-1. **Install AMD debug tools** :
+**Adjust memory page limit (VRAM management)** :
 ```bash
-sudo apt install amd-debug-tools -y
+sudo nano /etc/modprobe.d/amdttm.conf
 ```
 
-2. **Adjust memory page limit (VRAM management)** :
+The file content depends on how much memory you want to allocate to the GPU (plan for a minimum of 44 GB):
+- To allow 44 GB (ideal for 64 GB machines) : 44 * 1024 * 1024 / 4, specify `11534336` (4k pages)
+- To allow 72 GB (ideal for 96 GB machines) : 72 * 1024 * 1024 / 4, specify `18874368` (4k pages)
+- To allow 96 GB (ideal for 128 GB machines) : 96 * 1024 * 1024 / 4, specify `25165824` (4k pages)
+
+For example for 72 GB :
+```
+options amdttm pages_limit=18874368
+options amdttm page_pool_size=18874368
+```
+
+**Apply settings and reboot** :
 ```bash
-sudo amd-ttm --set 72
-sudo update-initramfs -u
+sudo update-initramfs -u -k all
 sudo reboot
 ```
 
@@ -108,7 +118,10 @@ curl http://localhost:11434/api/create -d '{
 
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B-Code",
-  "from": "jetelain/Qwen3.6-35B-A3B-Code"
+  "from": "jetelain/Qwen3.6-35B-A3B-Code",
+  "parameters": {
+    "num_ctx": 196608
+  }
 }'
 
 curl http://localhost:11434/api/create -d '{
