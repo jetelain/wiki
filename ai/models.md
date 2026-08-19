@@ -103,3 +103,27 @@ Models have been uploaded to ollama.com, there's no need to recreate them. This 
 
 5. Publish the model
 - `ollama push jetelain/Gemma-4-31B`
+
+## Qwen3.8 27B
+
+1. Retrieve the [Qwen3.8-27B.txt](models/Qwen3.8-27B/Qwen3.8-27B.txt) file
+
+2. Download Unsloth gguf files
+- `curl -LO https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/mmproj-BF16.gguf`
+- `curl -LO https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/Qwen3.8-27B-UD-Q4_K_XL.gguf`
+
+3. Verify the gguf files
+
+`sha256sum *.gguf`
+
+| File                               | SHA256                                                           |
+|------------------------------------|------------------------------------------------------------------|
+| Qwen3.8-27B-UD-Q4_K_XL.gguf        | 3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e |
+| mmproj-BF16.gguf                   | 83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53 |
+
+
+4. Create the model with ollama
+- `ollama create jetelain/Qwen3.8-27B -f Qwen3.8-27B.txt`
+
+5. Publish the model
+- `ollama push jetelain/Qwen3.8-27B`

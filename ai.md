@@ -69,7 +69,7 @@ graph TB
 |-----------------|------------:|----------------------:|
 | Qwen3.6-35B-A3B | 39.8 GB     | Good:     64 token/sec |
 | Gemma-4-26B-A4B | 27.9 GB[^1] | Good:     56 token/sec |
-| Qwen3.6-27B     | 19.1 GB     | Low:      19 token/sec |
+| Qwen3.8-27B     | 18.3 GB     | Low:      20 token/sec |
 | Gemma-4-31B     | 22.8 GB[^1] | Low:      17 token/sec |
 
 Note: the server was configured with 72 GB of VRAM (out of 96 GB of unified memory); it should be possible to load at least two models at the same time (to limit cold start times). However, there is a [bug in Ollama/ROCm](https://github.com/ollama/ollama/issues/16719) that allows only one model to be loaded at a time.

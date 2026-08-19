@@ -130,8 +130,8 @@ curl http://localhost:11434/api/create -d '{
 }'
 
 curl http://localhost:11434/api/create -d '{
-  "model": "Qwen3.6-27B",
-  "from": "jetelain/Qwen3.6-27B"
+  "model": "Qwen3.8-27B",
+  "from": "jetelain/Qwen3.8-27B"
 }'
 
 curl http://localhost:11434/api/create -d '{
