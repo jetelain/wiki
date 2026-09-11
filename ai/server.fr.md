@@ -3,7 +3,7 @@
 
 Matériel utilisé : [GMKtec Evo-X2 AI Mini-PC AMD Ryzen AI Max+ 395 (5,1GHz), 96GB LPDDR5X 8000MHz (12GB*8), 1TB PCIe 4.0 SSD](https://www.amazon.fr/dp/B0FK2299GS)
 
-## 🔹 Étape 1 : Préparation du système 
+## 🔹 Étape 1 : Préparation du système
 
 On suppose que le serveur dispose déjà d'Ubuntu Server.
 
@@ -40,12 +40,12 @@ sudo reboot
 
 ## 🔹 Étape 3 : Optimisation de la gestion mémoire GPU
 
-**Ajustement de la limite de pages mémoire (Vram management)** :
+**Ajustement de la limite de pages mémoire (gestion de la VRAM)** :
 ```bash
 sudo nano /etc/modprobe.d/amdttm.conf
 ```
 
-Le contenu du fichier dépends de ce que vous souhaitez accorder au GPU (prévoir au minimum 44 Go)
+Le contenu du fichier dépend de la quantité de mémoire que vous souhaitez accorder au GPU (prévoir au minimum 44 Go)
 - Pour autoriser 44 Go (idéal pour les machines à 64 Go) : 44 * 1024 * 1024 / 4, spécifier `11534336` (pages de 4k)
 - Pour autoriser 72 Go (idéal pour les machines à 96 Go) : 72 * 1024 * 1024 / 4, spécifier `18874368` (pages de 4k)
 - Pour autoriser 96 Go (idéal pour les machines à 128 Go) : 96 * 1024 * 1024 / 4, spécifier `25165824` (pages de 4k)
@@ -71,7 +71,7 @@ sudo systemctl enable --now docker
 sudo usermod -aG docker $LOGNAME
 ```
 
-## 🔹 Étape 5 : Installation et configuration de Ollama
+## 🔹 Étape 5 : Installation et configuration d'Ollama
 1. **Installation via le script officiel** :
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
@@ -181,7 +181,7 @@ docker compose up -d
 
 4. **Accès à l'interface** :
 
-Ouvrir un navigateur sur `http://[ip du serveur]:3000/` pour configurer le compte administrateur de Open WebUI
+Ouvrir un navigateur sur `http://[ip du serveur]:3000/` pour configurer le compte administrateur d'Open WebUI
 
 ## 🔹 Vérification et surveillance post-installation
 Exécutez ces commandes pour valider le bon fonctionnement :

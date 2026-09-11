@@ -60,10 +60,14 @@ Content to paste (make sure to specify the server's IP address or its [Tailscale
                             "text"
                         ]
                     },
+                    "limit": {
+                        "context": 196608,
+                        "output": 65536
+                    },
                     "reasoning": true,
                     "name": "Qwen 3.6"
                 },
-                "Gemma-4-26B-A4B:latest": {
+                "Qwen3.8-27B:latest": {
                     "modalities": {
                         "input": [
                             "text",
@@ -73,8 +77,12 @@ Content to paste (make sure to specify the server's IP address or its [Tailscale
                             "text"
                         ]
                     },
+                    "limit": {
+                        "context": 196608,
+                        "output": 65536
+                    },
                     "reasoning": true,
-                    "name": "Gemma 4"
+                    "name": "Qwen 3.8"
                 }
             },
             "name": "Ollama",

@@ -59,7 +59,7 @@ graph TB
 - [📘 AMD AI Server with Ubuntu, Ollama and Open WebUI](ai/server.md)
 - [📘 Tailscale Network](ai/tailscale.md)
 - [📘 Visual Studio 2026](ai/vs2026.md)
-- [📘 OpenCode](ai/opencode.fr.md)
+- [📘 OpenCode](ai/opencode.md)
 
 ## Metrics
 

@@ -85,7 +85,7 @@ Models have been uploaded to ollama.com, there's no need to recreate them. This 
 2. Download Unsloth gguf files
 - `curl -LO https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/gemma-4-31B-it-UD-Q4_K_XL.gguf`
 - `curl -LO https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/mmproj-BF16.gguf`
-- `curl -LO https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/mtp-gemma-4-31B-it.gguf `
+- `curl -LO https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/main/mtp-gemma-4-31B-it.gguf`
 
 3. Verify the gguf files
 
@@ -111,6 +111,8 @@ Models have been uploaded to ollama.com, there's no need to recreate them. This 
 2. Download Unsloth gguf files
 - `curl -LO https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/mmproj-BF16.gguf`
 - `curl -LO https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/Qwen3.8-27B-UD-Q4_K_XL.gguf`
+- `curl -LO https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/Qwen3.8-27B-UD-Q8_K_XL.gguf`
+- `curl -LO https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/Qwen3.8-27B-UD-IQ3_S.gguf`
 
 3. Verify the gguf files
 
@@ -119,11 +121,17 @@ Models have been uploaded to ollama.com, there's no need to recreate them. This 
 | File                               | SHA256                                                           |
 |------------------------------------|------------------------------------------------------------------|
 | Qwen3.8-27B-UD-Q4_K_XL.gguf        | 3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e |
+| Qwen3.8-27B-UD-Q8_K_XL.gguf        | af36ecb6b5db1407953345b746c14ac93f0657dda413910b4348683a2d990377 |
+| Qwen3.8-27B-UD-IQ3_S.gguf          | d847e2c1e4aa276e4b7b8e9ad7628050e61e165d49ab995407bc36677a6f3864 |
 | mmproj-BF16.gguf                   | 83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53 |
 
 
 4. Create the model with ollama
 - `ollama create jetelain/Qwen3.8-27B -f Qwen3.8-27B.txt`
+- `ollama create jetelain/Qwen3.8-27B:q8 -f Qwen3.8-27B-Q8.txt`
+- `ollama create jetelain/Qwen3.8-27B:i3 -f Qwen3.8-27B-I3.txt`
 
 5. Publish the model
 - `ollama push jetelain/Qwen3.8-27B`
+- `ollama push jetelain/Qwen3.8-27B:q8`
+- `ollama push jetelain/Qwen3.8-27B:i3`

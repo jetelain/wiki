@@ -60,10 +60,14 @@ Contenu à coller (penser à préciser l'adresse IP du serveur ou son [nom de do
                             "text"
                         ]
                     },
+                    "limit": {
+                        "context": 196608,
+                        "output": 65536
+                    },
                     "reasoning": true,
                     "name": "Qwen 3.6"
                 },
-                "Gemma-4-26B-A4B:latest": {
+                "Qwen3.8-27B:latest": {
                     "modalities": {
                         "input": [
                             "text",
@@ -73,8 +77,12 @@ Contenu à coller (penser à préciser l'adresse IP du serveur ou son [nom de do
                             "text"
                         ]
                     },
+                    "limit": {
+                        "context": 196608,
+                        "output": 65536
+                    },
                     "reasoning": true,
-                    "name": "Gemma 4"
+                    "name": "Qwen 3.8"
                 }
             },
             "name": "Ollama",
