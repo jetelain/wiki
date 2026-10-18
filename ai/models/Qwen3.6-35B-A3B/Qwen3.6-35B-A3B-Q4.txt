@@ -1,0 +1,21 @@
+FROM Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf
+FROM mmproj-BF16.gguf
+
+TEMPLATE {{ .Prompt }}
+
+RENDERER qwen3.5
+PARSER qwen3.5
+
+# Large context for agentic tasks (64k)
+PARAMETER num_ctx 65536
+
+# Recommended from https://unsloth.ai/docs/models/qwen3.6#recommended-settings (General tasks)
+PARAMETER temperature 1.0
+PARAMETER top_p 0.95
+PARAMETER top_k 20
+PARAMETER min_p 0
+PARAMETER presence_penalty 0
+PARAMETER repeat_penalty 1
+
+# Recommended from https://unsloth.ai/docs/models/qwen3.6#mtp-guide
+PARAMETER draft_num_predict 2

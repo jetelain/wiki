@@ -1,6 +1,8 @@
 # Laptop
 
-NVIDIA RTX 4070 8GB Mobile with Intel Core Ultra 9 185H
+NVIDIA RTX 4070 8GB Mobile with Intel Core Ultra 9 185H (64GB RAM)
+
+> System configured with `OLLAMA_KV_CACHE_TYPE=q8_0` and no VRAM reservation required for display and OS processes (thanks to Intel Integrated Graphics).
 
 ## Models installation
 

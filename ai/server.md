@@ -102,7 +102,7 @@ sudo systemctl restart ollama.service
 
 ```bash
 ollama pull jetelain/Qwen3.6-35B-A3B
-ollama pull jetelain/Qwen3.6-35B-A3B-Code
+ollama pull jetelain/Qwen3.6-35B-A3B:code
 ollama pull jetelain/Gemma-4-26B-A4B
 ollama pull jetelain/Qwen3.8-27B
 ollama pull jetelain/Gemma-4-31B
@@ -118,7 +118,7 @@ curl http://localhost:11434/api/create -d '{
 
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B-Code",
-  "from": "jetelain/Qwen3.6-35B-A3B-Code",
+  "from": "jetelain/Qwen3.6-35B-A3B:code",
   "parameters": {
     "num_ctx": 225280
   }
