@@ -1,0 +1,7 @@
+FROM jetelain/Qwen3.6-35B-A3B:i3
+
+# Large context for agentic tasks (64k)
+PARAMETER num_ctx 65536
+
+# Recommended from https://unsloth.ai/docs/models/qwen3.6#recommended-settings (Precise coding tasks)
+PARAMETER temperature 0.6
