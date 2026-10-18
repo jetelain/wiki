@@ -120,7 +120,7 @@ curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B-Code",
   "from": "jetelain/Qwen3.6-35B-A3B-Code",
   "parameters": {
-    "num_ctx": 196608
+    "num_ctx": 225280
   }
 }'
 
@@ -133,7 +133,7 @@ curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.8-27B",
   "from": "jetelain/Qwen3.8-27B",
   "parameters": {
-    "num_ctx": 196608
+    "num_ctx": 225280
   }
 }'
 
