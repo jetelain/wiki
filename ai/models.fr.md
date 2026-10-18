@@ -2,12 +2,59 @@
 
 Les modèles ont été envoyés sur ollama.com, il n'est pas nécessaire de les recréer. Cette page retrace leur création.
 
+## Qwen 3.5 4B
+
+1. Récupérer les fichiers [Qwen3.5-4B.txt](models/Qwen3.5-4B/Qwen3.5-4B.txt), [Qwen3.5-4B-128k.txt](models/Qwen3.5-4B/Qwen3.5-4B-128k.txt) et [Qwen3.5-4B-256k.txt](models/Qwen3.5-4B/Qwen3.5-4B-256k.txt)
+
+2. Télécharger les fichiers gguf de Unsloth
+- `curl -LO https://huggingface.co/unsloth/Qwen3.5-4B-MTP-GGUF/resolve/main/Qwen3.5-4B-UD-Q4_K_XL.gguf`
+- `curl -LO https://huggingface.co/unsloth/Qwen3.5-4B-MTP-GGUF/resolve/main/mmproj-BF16.gguf`
+
+3. Vérifier les gguf
+
+`sha256sum *.gguf`
+
+| Fichier                         | SHA256                                                           |
+|---------------------------------|------------------------------------------------------------------|
+| Qwen3.5-4B-UD-Q4_K_XL.gguf      | d2bfbee4de17c74e6308a4dc750be4c2271f92ae2df1e28f5c5afa0dcdb6fccc |
+| mmproj-BF16.gguf                | 169ee40fb1e234ff38b2d814eb8633611a54b6f941f11b700d96dec02cb44ddf |
+
+4. Créer les modèles avec ollama
+- `ollama create jetelain/Qwen3.5-4B -f Qwen3.5-4B.txt`
+
+5. Publier les modèles
+- `ollama push jetelain/Qwen3.5-4B`
+
+## Qwen 3.5 9B
+
+1. Récupérer le fichier [Qwen3.5-9B.txt](models/Qwen3.5-9B/Qwen3.5-9B.txt)
+
+2. Télécharger les fichiers gguf de Unsloth
+- `curl -LO https://huggingface.co/unsloth/Qwen3.5-9B-MTP-GGUF/resolve/main/Qwen3.5-9B-UD-Q4_K_XL.gguf`
+- `curl -LO https://huggingface.co/unsloth/Qwen3.5-9B-MTP-GGUF/resolve/main/mmproj-BF16.gguf`
+
+3. Vérifier les gguf
+
+`sha256sum *.gguf`
+
+| Fichier                         | SHA256                                                           |
+|---------------------------------|------------------------------------------------------------------|
+| Qwen3.5-9B-UD-Q4_K_XL.gguf      | 362f85a2d7dbc0259e926d5ac33ca0d0f17fd3753496d65bfd2106384c929d3f |
+| mmproj-BF16.gguf                | 73c90471c349fec797f3969b59249259318ee3fa855a684da7ef35a46f063a9e |
+
+4. Créer le modèle avec ollama
+- `ollama create jetelain/Qwen3.5-9B -f Qwen3.5-9B.txt`
+
+5. Publier le modèle
+- `ollama push jetelain/Qwen3.5-9B`
+
 ## Qwen 3.6 35B A3B
 
-1. Récupérer les fichiers [Qwen3.6-35B-A3B.txt](models/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B.txt) et [Qwen3.6-35B-A3B-Code.txt](models/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-Code.txt)
+1. Récupérer les fichiers [Qwen3.6-35B-A3B.txt](models/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B.txt), [Qwen3.6-35B-A3B-Code.txt](models/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-Code.txt), [Qwen3.6-35B-A3B-I3.txt](models/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-I3.txt) et [Qwen3.6-35B-A3B-I3-Code.txt](models/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-I3-Code.txt)
 
 2. Télécharger les fichiers gguf de Unsloth
 - `curl -LO https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-Q8_K_XL.gguf`
+- `curl -LO https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-IQ3_S.gguf`
 - `curl -LO https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF/resolve/main/mmproj-BF16.gguf`
 
 3. Vérifier les gguf
@@ -17,15 +64,20 @@ Les modèles ont été envoyés sur ollama.com, il n'est pas nécessaire de les 
 | Fichier                         | SHA256                                                           |
 |---------------------------------|------------------------------------------------------------------|
 | Qwen3.6-35B-A3B-UD-Q8_K_XL.gguf | 6c6b816537abad90b250a0972b345466028d861ddfe316d5f0de31ca6440f781 |
+| Qwen3.6-35B-A3B-UD-IQ3_S.gguf   | ab639a7f330f96c47d3e6c2dd2d6445182e7b763e17e6048dc850a71bbc9f27f |
 | mmproj-BF16.gguf                | da63cb47a76763c712393f8a017070188a304fa39f8aeea6edc629ed7b975cfa |
 
 4. Créer les modèles avec ollama
 - `ollama create jetelain/Qwen3.6-35B-A3B -f Qwen3.6-35B-A3B.txt`
-- `ollama create jetelain/Qwen3.6-35B-A3B-Code -f Qwen3.6-35B-A3B-Code.txt`
+- `ollama create jetelain/Qwen3.6-35B-A3B:code -f Qwen3.6-35B-A3B-Code.txt`
+- `ollama create jetelain/Qwen3.6-35B-A3B:i3 -f Qwen3.6-35B-A3B-I3.txt`
+- `ollama create jetelain/Qwen3.6-35B-A3B:i3-code -f Qwen3.6-35B-A3B-I3-Code.txt`
 
 5. Publier les modèles
 - `ollama push jetelain/Qwen3.6-35B-A3B`
-- `ollama push jetelain/Qwen3.6-35B-A3B-Code`
+- `ollama push jetelain/Qwen3.6-35B-A3B:code`
+- `ollama push jetelain/Qwen3.6-35B-A3B:i3`
+- `ollama push jetelain/Qwen3.6-35B-A3B:i3-code`
 
 ## Gemma 4 26B A4B
 
