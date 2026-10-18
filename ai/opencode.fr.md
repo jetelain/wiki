@@ -61,7 +61,7 @@ Contenu à coller (penser à préciser l'adresse IP du serveur ou son [nom de do
                         ]
                     },
                     "limit": {
-                        "context": 196608,
+                        "context": 262144,
                         "output": 65536
                     },
                     "reasoning": true,
@@ -78,7 +78,7 @@ Contenu à coller (penser à préciser l'adresse IP du serveur ou son [nom de do
                         ]
                     },
                     "limit": {
-                        "context": 196608,
+                        "context": 262144,
                         "output": 65536
                     },
                     "reasoning": true,

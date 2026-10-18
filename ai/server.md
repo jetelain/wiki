@@ -113,14 +113,17 @@ ollama pull jetelain/Gemma-4-31B
 ```bash
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B",
-  "from": "jetelain/Qwen3.6-35B-A3B"
+  "from": "jetelain/Qwen3.6-35B-A3B",
+  "parameters": {
+    "num_ctx": 262144
+  }
 }'
 
 curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.6-35B-A3B-Code",
   "from": "jetelain/Qwen3.6-35B-A3B:code",
   "parameters": {
-    "num_ctx": 225280
+    "num_ctx": 262144
   }
 }'
 
@@ -133,7 +136,7 @@ curl http://localhost:11434/api/create -d '{
   "model": "Qwen3.8-27B",
   "from": "jetelain/Qwen3.8-27B",
   "parameters": {
-    "num_ctx": 225280
+    "num_ctx": 262144
   }
 }'
 

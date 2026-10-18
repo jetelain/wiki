@@ -61,7 +61,7 @@ Content to paste (make sure to specify the server's IP address or its [Tailscale
                         ]
                     },
                     "limit": {
-                        "context": 196608,
+                        "context": 262144,
                         "output": 65536
                     },
                     "reasoning": true,
@@ -78,7 +78,7 @@ Content to paste (make sure to specify the server's IP address or its [Tailscale
                         ]
                     },
                     "limit": {
-                        "context": 196608,
+                        "context": 262144,
                         "output": 65536
                     },
                     "reasoning": true,
